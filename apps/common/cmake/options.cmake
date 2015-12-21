@@ -53,6 +53,7 @@ INCLUDE(CMakeDependentOption)
 
 # include project specific modules
 INCLUDE(findoplklib)
+INCLUDE(linkoplklib)
 
 ################################################################################
 # Set options
@@ -86,6 +87,8 @@ INCLUDE_DIRECTORIES (
     ${COMMON_SOURCE_DIR}
 )
 
-IF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+IF(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    INCLUDE(configure-linux)
+ELSEIF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     INCLUDE(configure-windows)
 ENDIF()
